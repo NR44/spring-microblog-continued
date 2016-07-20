@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Message</title>
+</head>
+<body>
+    <h1>Here is the message you wish to edit.</h1>
+    {{#messageToEdit}}
+    <p>{{text}}</p>
+
+    <form action="/edited" method="post">
+        <input type="text" placeholder="Enter your new Message" name="newMessage">
+        <input type="hidden" value="{{id}}" name="id">
+        <button type="submit">Edit New Message</button>
+    </form>
+    {{/messageToEdit}}
+</body>
+</html>

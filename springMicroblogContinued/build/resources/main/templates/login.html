@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+{{^userName}}
+<h1>Login Please!</h1>
+<form action="/login" method="post">
+    <input type="text" placeholder="Enter your name" name="userName"/>
+    <button type="submit">Login</button>
+</form>
+
+{{/userName}}
+
+{{#userName}}
+<h1>Signed in as, <u>{{userName}}</u></h1>
+<form action = "/logout" method="post">
+    <button type="submit">Logout</button>
+</form>
+
+<h1>Hello, {{userName}}! Let's enter some messages!</h1>
+<form action="/add-message" method="post">
+    <input type="text" placeholder="Enter your Message" name="text">
+    <button type="submit">Submit Message</button>
+</form>
+
+<h2>Message by {{userName}}:</h2>
+
+{{#messages}}
+<form action="/delete-message" method="post">
+    <ul>
+        <li>{{text}} <a href="/edit-message?id={{id}}">Edit</a> </li>
+        <input type="hidden" value="{{id}}" name="id">
+    </ul>
+    <button type="submit">Delete Message</button>
+</form>
+{{/messages}}
+
+{{/userName}}
+</body>
+</html>
